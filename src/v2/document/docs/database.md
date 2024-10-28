@@ -38,7 +38,7 @@ The database schema is designed to support the following features:
 
 1. **UUID Usage**:
 
-    - All tables use CHAR(36) UUID as primary keys, ensuring uniqueness across distributed systems and simplifying potential future data migration or merging.
+    - All tables use CHAR(36) UUID as primary keys for unique identification.
 
 2. **Flexible Product Structure**:
 
@@ -76,7 +76,7 @@ The database schema is designed to support the following features:
 
 The following sections provide detailed descriptions of each table in the database schema, including the column names, data types, and descriptions.
 
-### Users
+### **Users**
 
 | Column Name  | Data Type    | Description                                 |
 | ------------ | ------------ | ------------------------------------------- |
@@ -91,7 +91,7 @@ The following sections provide detailed descriptions of each table in the databa
 | updatedAt    | DATETIME     | Timestamp of last update                    |
 | deletedAt    | DATETIME     | Timestamp of user deletion, if applicable   |
 
-### Address
+### **Address**
 
 | Column Name   | Data Type    | Description                                    |
 | ------------- | ------------ | ---------------------------------------------- |
@@ -105,7 +105,7 @@ The following sections provide detailed descriptions of each table in the databa
 | createdAt     | DATETIME     | Timestamp of address creation                  |
 | updatedAt     | DATETIME     | Timestamp of last update                       |
 
-### Products
+### **Products**
 
 | Column Name | Data Type    | Description                                  |
 | ----------- | ------------ | -------------------------------------------- |
@@ -116,7 +116,7 @@ The following sections provide detailed descriptions of each table in the databa
 | updatedAt   | DATETIME     | Timestamp of last update                     |
 | deletedAt   | DATETIME     | Timestamp of product deletion, if applicable |
 
-### Variants
+### **Variants**
 
 | Column Name   | Data Type    | Description                                  |
 | ------------- | ------------ | -------------------------------------------- |
@@ -133,7 +133,7 @@ The following sections provide detailed descriptions of each table in the databa
 | imageID       | CHAR(36)     | Foreign key referencing Product_Images table |
 | productID     | CHAR(36)     | Foreign key referencing Products table       |
 
-### Attributes
+### **Attributes**
 
 | Column Name | Data Type    | Description                          |
 | ----------- | ------------ | ------------------------------------ |
@@ -142,7 +142,7 @@ The following sections provide detailed descriptions of each table in the databa
 | createdAt   | DATETIME     | Timestamp of attribute creation      |
 | updatedAt   | DATETIME     | Timestamp of last update             |
 
-### Attribute_Values
+### **Attribute_Values**
 
 | Column Name | Data Type    | Description                                |
 | ----------- | ------------ | ------------------------------------------ |
@@ -152,14 +152,14 @@ The following sections provide detailed descriptions of each table in the databa
 | updatedAt   | DATETIME     | Timestamp of last update                   |
 | attributeID | CHAR(36)     | Foreign key referencing Attributes table   |
 
-### Variant_Attribute_Values
+### **Variant_Attribute_Values**
 
 | Column Name | Data Type | Description                                    |
 | ----------- | --------- | ---------------------------------------------- |
 | variantID   | CHAR(36)  | Foreign key referencing Variants table         |
 | valueID     | CHAR(36)  | Foreign key referencing Attribute_Values table |
 
-### Product_Images
+### **Product_Images**
 
 | Column Name  | Data Type    | Description                            |
 | ------------ | ------------ | -------------------------------------- |
@@ -170,7 +170,7 @@ The following sections provide detailed descriptions of each table in the databa
 | updatedAt    | DATETIME     | Timestamp of last update               |
 | productID    | CHAR(36)     | Foreign key referencing Products table |
 
-### Categories
+### **Categories**
 
 | Column Name | Data Type    | Description                                              |
 | ----------- | ------------ | -------------------------------------------------------- |
@@ -181,7 +181,7 @@ The following sections provide detailed descriptions of each table in the databa
 | updatedAt   | DATETIME     | Timestamp of last update                                 |
 | parentID    | CHAR(36)     | Self-referencing foreign key for hierarchical categories |
 
-### Product_Categories
+### **Product_Categories**
 
 | Column Name       | Data Type | Description                              |
 | ----------------- | --------- | ---------------------------------------- |
@@ -189,7 +189,7 @@ The following sections provide detailed descriptions of each table in the databa
 | categoryID        | CHAR(36)  | Foreign key referencing Categories table |
 | productID         | CHAR(36)  | Foreign key referencing Products table   |
 
-### Coupons
+### **Coupons**
 
 | Column Name           | Data Type    | Description                                     |
 | --------------------- | ------------ | ----------------------------------------------- |
@@ -209,7 +209,7 @@ The following sections provide detailed descriptions of each table in the databa
 | updatedAt             | DATETIME     | Timestamp of last update                        |
 | version               | INT          | Version number                                  |
 
-### Product_Coupons
+### **Product_Coupons**
 
 | Column Name     | Data Type | Description                            |
 | --------------- | --------- | -------------------------------------- |
@@ -217,7 +217,7 @@ The following sections provide detailed descriptions of each table in the databa
 | productID       | CHAR(36)  | Foreign key referencing Products table |
 | couponID        | CHAR(36)  | Foreign key referencing Coupons table  |
 
-### Category_Coupons
+### **Category_Coupons**
 
 | Column Name      | Data Type | Description                              |
 | ---------------- | --------- | ---------------------------------------- |
@@ -225,7 +225,7 @@ The following sections provide detailed descriptions of each table in the databa
 | categoryID       | CHAR(36)  | Foreign key referencing Categories table |
 | couponID         | CHAR(36)  | Foreign key referencing Coupons table    |
 
-### Orders
+### **Orders**
 
 | Column Name       | Data Type    | Description                                                                                         |
 | ----------------- | ------------ | --------------------------------------------------------------------------------------------------- |
@@ -243,7 +243,7 @@ The following sections provide detailed descriptions of each table in the databa
 | shippingAddressID | CHAR(36)     | Foreign key referencing Address table                                                               |
 | couponID          | CHAR(36)     | Foreign key referencing Coupons table                                                               |
 
-### Order_Items
+### **Order_Items**
 
 | Column Name             | Data Type | Description                               |
 | ----------------------- | --------- | ----------------------------------------- |
@@ -254,7 +254,7 @@ The following sections provide detailed descriptions of each table in the databa
 | orderID                 | CHAR(36)  | Foreign key referencing Orders table      |
 | variantID               | CHAR(36)  | Foreign key referencing Variants table    |
 
-### Cart_Items
+### **Cart_Items**
 
 | Column Name | Data Type | Description                            |
 | ----------- | --------- | -------------------------------------- |
@@ -263,7 +263,7 @@ The following sections provide detailed descriptions of each table in the databa
 | userID      | CHAR(36)  | Foreign key referencing Users table    |
 | variantID   | CHAR(36)  | Foreign key referencing Variants table |
 
-### Verify_Requests
+### **Verify_Requests**
 
 | Column Name | Data Type    | Description                                                   |
 | ----------- | ------------ | ------------------------------------------------------------- |
@@ -275,7 +275,7 @@ The following sections provide detailed descriptions of each table in the databa
 | createdAt   | DATETIME     | Timestamp of request creation                                 |
 | updatedAt   | DATETIME     | Timestamp of last update                                      |
 
-### Shipping_Address
+### **Shipping_Address**
 
 | Column Name       | Data Type    | Description                                 |
 | ----------------- | ------------ | ------------------------------------------- |

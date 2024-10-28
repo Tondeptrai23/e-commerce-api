@@ -84,7 +84,9 @@ This feature allows businesses to create and manage flexible discount coupons an
 
 ## Example Use Case
 
-**Scenario**: A store plans to launch a promotion that offers a 20% discount on all T-shirts for a duration of 30 days, with a cap of 100 customers eligible for the discount. To qualify, orders must exceed $50, and the maximum discount that can be applied to a single order is $20. The store administrator sets up the coupon with the following specifications:
+### T-Shirt Promotion
+
+A store plans to launch a promotion that offers a 20% discount on all T-shirts for a duration of 30 days, with a cap of 100 customers eligible for the discount. To qualify, orders must exceed $50, and the maximum discount that can be applied to a single order is $20. The store administrator sets up the coupon with the following specifications:
 
 -   **Coupon Code**: `TSHIRT20`
 -   **Discount Type**: Percentage (20%)
@@ -92,15 +94,18 @@ This feature allows businesses to create and manage flexible discount coupons an
 -   **Minimum Order Amount**: $50
 -   **Maximum Discount**: $20
 -   **Usage Limit**: 100
--   **Expiration Date**: 30 days from creation
+-   **Start Date**: Current date
+-   **Expiration Date**: 30 days from the start date
 
-When customers apply the coupon code `TSHIRT20` during checkout, the system automatically calculates the discount based on the defined rules. The coupon is valid for 30 days or until the usage limit is reached, providing an incentive for customers to make purchases within the specified timeframe.
+When customers apply the coupon code `TSHIRT20` during checkout, the system automatically calculates the discount based on the defined rules. The coupon is valid for 30 days from today or until the usage limit is reached, providing an incentive for customers to make purchases within the specified timeframe.
 
 Certain fields can be left blank to allow the coupon to apply to all products or orders.
 
 This feature enables businesses to implement targeted promotions, monitor the effectiveness of various campaigns, and adjust their strategies based on real-time analytics. By providing personalized discounts and incentives, businesses can enhance customer engagement and stimulate sales growth.
 
-**Alternative**: The store can utilize the `DiscountPrice` field for each variant to set a reduced price. However, this approach is less flexible and dynamic compared to using coupons. It is more suitable for permanent discounts or for situations where displaying the discounted price directly on the product page is desired.
+### Alternative Pricing Strategy
+
+The store can utilize the `DiscountPrice` field for each variant to set a reduced price. However, this approach is less flexible and dynamic compared to using coupons. It is more suitable for permanent discounts or for situations where displaying the discounted price directly on the product page is desired.
 
 # Admin Interface
 
@@ -110,14 +115,17 @@ The admin interface is designed to give administrators full control over the e-c
 
 ## Key Features
 
--   **Advanced Search and Filtering**: Admins can search across the product database or order history using multiple criteria, including product attributes, SKU, price range, order status, customer information, and date range.
--   **Sorting and Pagination**: The interface supports sorting by various fields (e.g., price, popularity, inventory levels) and includes pagination for handling large datasets.
+-   **Advanced Search and Filtering**: Admins can perform searches across any resource (e.g., products, orders, users) using multiple criteria tailored to each resource type. For instance:
+    -   **Products**: Search by attributes, SKU, price range, availability, and other product-specific details.
+    -   **Orders**: Filter by order status, customer information, date range, and order total.
+    -   **Users**: Filter by registration date, account status, email, or other identifying details.
+-   **Sorting and Pagination**: The interface supports sorting by relevant fields for each resource and includes pagination to efficiently handle large datasets across the application.
 
 ## Example Use Case
 
-The API features a robust filtering, sorting, and pagination system that empowers administrators to efficiently search and manage resources such as products, orders, and customers. For instance, an admin can easily locate all orders containing a specific product by applying filters based on product attributes or SKU.
+The API features a robust filtering, sorting, and pagination system that empowers administrators to efficiently search and manage resources such as products, orders, and customers.
 
-The interface also includes support for comparison operators like `>`, `<`, `>=`, `<=`, `=`, and `!=`, allowing admins to conduct more detailed searches. They can filter products based on inventory levels to identify those with stock counts below a certain threshold or pinpoint orders that exceed a particular total amount. Additionally, admins can utilize the LIKE operator for string fields, facilitating partial matches in product names, customer names, or order ID.
+The interface also includes support for comparison operators like `>`, `<`, `>=`, `<=`, `=`, and `!=`, allowing admins to conduct more detailed searches. Additionally, admins can utilize the `LIKE` operator for string fields, facilitating partial matches in product names, customer names, or order ID.
 
 For example, admin can do the following:
 
@@ -129,4 +137,6 @@ For example, admin can do the following:
 
 ### Client Space For Improvement
 
-With the advanced search and filtering capabilities provided by the API, the client can enhance the admin interface by incorporating data visualization tools, such as charts and graphs, to provide a visual representation of sales trends, inventory levels, and customer demographics. By leveraging analytics, administrators can gain deeper insights into business performance and make data-driven decisions to optimize operations and drive growth.
+With the advanced search and filtering capabilities provided by the API, the client can enhance the admin interface by incorporating data visualization tools, such as charts and graphs, to provide a visual representation of sales trends, inventory levels, and customer demographics.
+
+By leveraging analytics, administrators can gain deeper insights into business performance and make data-driven decisions to optimize operations and drive growth.
